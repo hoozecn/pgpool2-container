@@ -8,9 +8,9 @@ ENV PG_VERSION 9.5
 
 ENV LANG en_US.utf8
     
-RUN apk --update --no-cache add libpq=${PG_VERSION} postgresql-dev=${PG_VERSION} postgresql-client=${PG_VERSION} \
+RUN apk --update --no-cache add libpq postgresql-dev postgresql-client \
                                 linux-headers gcc make libgcc g++ \
-                                libffi-dev python python-dev py2-pip libffi-dev && \
+                                libffi-dev python python-dev py2-pip libffi-dev wget ca-certificates && \
                                 wget https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 -O - > /bin/gosu && \
                                 chmod +x /bin/gosu && \
     cd /tmp && \ 
