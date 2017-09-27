@@ -4,13 +4,13 @@ FROM alpine:3.5
 
 ENV PGPOOL_VERSION 3.6.1
 
-ENV PG_VERSION 9.6.1-r0
+ENV PG_VERSION 9.5
 
 ENV LANG en_US.utf8
     
 RUN apk --update --no-cache add libpq=${PG_VERSION} postgresql-dev=${PG_VERSION} postgresql-client=${PG_VERSION} \
                                 linux-headers gcc make libgcc g++ \
-                                libffi-dev python python-dev py2-pip libffi-dev && \
+                                libffi-dev python python-dev py2-pip libffi-dev gosu && \
     cd /tmp && \ 
     wget http://www.pgpool.net/mediawiki/images/pgpool-II-${PGPOOL_VERSION}.tar.gz -O - | tar -xz && \
     chown root:root -R /tmp/pgpool-II-${PGPOOL_VERSION} && \
